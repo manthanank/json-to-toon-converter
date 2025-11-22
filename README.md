@@ -1,59 +1,158 @@
-# JsonToToonConverter
+# JSON to TOON Converter
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+A modern web application that converts JSON data into TOON (Token-Oriented Object Notation) format. TOON is a human-readable, tabular format optimized for LLM prompts and data representation.
 
-## Development server
+## About TOON
 
-To start a local development server, run:
+TOON (Token-Oriented Object Notation) is a format designed to be more efficient for LLM processing than traditional JSON or YAML. It features:
 
-```bash
-ng serve
-```
+- **Tabular representation** for arrays of objects with uniform structure
+- **Compact syntax** that reduces token usage in LLM prompts
+- **Human-readable** format that's easy to understand
+- **YAML-style indentation** for nested structures
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Learn more about the TOON specification: [https://github.com/toon-format/toon](https://github.com/toon-format/toon)
 
-## Code scaffolding
+## Features
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- ✨ **Real-time JSON validation** with error messages
+- 🔄 **Instant conversion** from JSON to TOON format
+- 📋 **Copy to clipboard** functionality
+- 💾 **Download as file** (.toon extension)
+- 🌙 **Dark mode** with system preference detection
+- 📊 **Visitor tracking** to show usage statistics
+- 🎨 **Modern UI** built with Tailwind CSS
+- 📱 **Responsive design** for all screen sizes
+- 🧪 **Sample data** button for quick testing
 
-```bash
-ng generate component component-name
-```
+## Tech Stack
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Angular 21** - Modern Angular with standalone components
+- **TypeScript** - Type-safe development
+- **Tailwind CSS 4** - Utility-first styling
+- **RxJS** - Reactive programming
+- **Signals** - Angular's new reactive state management
+- **Vitest** - Unit testing framework
 
-```bash
-ng generate --help
-```
+## Getting Started
 
-## Building
+### Prerequisites
 
-To build the project run:
+- Node.js (v18 or higher)
+- npm (v10.9.2 or higher)
 
-```bash
-ng build
-```
+### Installation
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+1. Clone the repository:
 
 ```bash
-ng e2e
+git clone https://github.com/manthanank/json-to-toon-converter.git
+cd json-to-toon-converter
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+1. Install dependencies:
 
-## Additional Resources
+```bash
+npm install
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Start the development server:
+
+```bash
+npm start
+```
+
+1. Open your browser and navigate to `http://localhost:4200`
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## Usage
+
+1. **Enter JSON**: Paste or type your JSON data into the input area
+1. **Validate**: The app automatically validates your JSON as you type
+1. **Convert**: Click the "Convert →" button to transform JSON to TOON
+1. **Copy or Download**: Use the "Copy" button to copy to clipboard or "Download" to save as a `.toon` file
+
+### Example
+
+**Input JSON:**
+
+```json
+{
+  "users": [
+    { "id": 1, "name": "Alice", "role": "admin" },
+    { "id": 2, "name": "Bob", "role": "user" }
+  ],
+  "tags": ["development", "production"]
+}
+```
+
+**Output TOON:**
+
+```toon
+users[2]{id,name,role}:
+  1,Alice,admin
+  2,Bob,user
+tags[2]: development,production
+```
+
+## Development
+
+### Available Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm run watch` - Build and watch for changes
+- `npm test` - Run unit tests
+
+### Project Structure
+
+```tree
+src/
+├── app/
+│   ├── app.ts          # Main component with conversion logic
+│   ├── app.html        # Template
+│   ├── app.css         # Component styles
+│   ├── app.routes.ts   # Routing configuration
+│   ├── models/         # TypeScript models
+│   │   └── visit.model.ts
+│   └── services/       # Services
+│       └── track.ts    # Visitor tracking service
+├── environments/       # Environment configuration
+└── styles.css          # Global styles
+```
+
+## Features in Detail
+
+### JSON Validation
+
+- Real-time validation as you type
+- Clear error messages for invalid JSON
+- Visual feedback with red highlighting
+
+### TOON Conversion
+
+- Handles all JSON types: objects, arrays, primitives
+- Detects uniform object arrays and converts to tabular format
+- Preserves nested structures with proper indentation
+- Smart string quoting (only when necessary)
+
+### Dark Mode
+
+- Toggle between light and dark themes
+- Remembers your preference in localStorage
+- Respects system color scheme preference
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is private and not licensed for public use.
